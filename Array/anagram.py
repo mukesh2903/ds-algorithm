@@ -1,22 +1,27 @@
 
 def anagram(first_word, second_word):
-    word_found = True
     first_list = list(first_word)
-    i = 0
-    while i <= len(first_list) - 1:
-        if first_list[i] in second_word:
-            word_found = True
-        else:
-            word_found = False
-            break
-        i = i + 1
-    check_length = len(first_word) == len(second_word)
-    result = word_found == check_length
-    return result
+    check_anagram = True
+    for i in range(len(first_list)):
+        if first_list[i] not in second_word:
+            check_anagram = False
+        break
+    return check_anagram
+
+
+def length_check(first_word, second_word):
+    return len(first_word) == len(second_word)
+
+
+def is_anagram(first_word, second_word):
+    if length_check(first_word, second_word):
+        return anagram(first_word, second_word)
+    else:
+        return False
 
 
 if __name__ == "__main__":
-    print(anagram('check', 'kcehc'))
+    print(is_anagram('check', 'kcehc'))
 
 
 
